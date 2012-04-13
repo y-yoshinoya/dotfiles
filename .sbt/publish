@@ -1,0 +1,15 @@
+#!/bin/sh
+
+GIT_REPOS_DIR=~/project/aselab.github.com/
+
+case $2 in
+  scala-activerecord)
+    cd $GIT_REPOS_DIR
+    git pull
+    cp -r $1/* $GIT_REPOS_DIR/maven
+    ./update-directory-index.sh
+    git add .
+    git commit -m "update jars"
+    git push origin master
+    ;;
+esac
